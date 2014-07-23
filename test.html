@@ -32,7 +32,7 @@
 
     <div class="gridster">
         <ul>
-            <li id="li1" data-row="1" data-col="1" data-sizex="1" data-sizey="5">
+            <li id="li1" data-row="1" data-col="3" data-sizex="1" data-sizey="5">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
                         <span class="panel-title pull-left"><span class="glyphicon glyphicon-asterisk"></span> <span class="panel-title-text">Featuring</span></span>
@@ -146,7 +146,7 @@
 
 
     <script type="text/javascript">
-        //localStorage.clear();
+        localStorage.clear();
 
         var localdata_position = JSON.parse(localStorage.getItem('dashboard.grid'));
         var localdata_colors = JSON.parse(localStorage.getItem('dashboard.colors'));
@@ -154,7 +154,8 @@
         var localdata_titles = JSON.parse(localStorage.getItem('dashboard.titles'));
 
 
-        fnCreateGridster('dashboard.grid', 'dashboard.colors', 'dashboard.states', 'dashboard.titles');
+        //fnCreateGridster('dashboard.grid', 'dashboard.colors', 'dashboard.states', 'dashboard.titles');
+        fnCreateGridster();
     </script>
 </body>
 </html>
