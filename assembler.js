@@ -28,10 +28,10 @@ testConfig[osapi.container.ContainerConfig.RENDER_DEBUG] = '1';
 // Default the security token for the container. Using this example security token requires enabling
 // the DefaultSecurityTokenCodec to let UrlParameterAuthenticationHandler create valid security token.
 // 10 seconds is fast, but this is mostly for demonstration purposes.
-testConfig[osapi.container.ContainerConfig.GET_CONTAINER_TOKEN] = function(callback) {
-  gadgets.log('Updating container security token.');
-  callback('john.doe:john.doe:appid:cont:url:0:default', 1000);
-};
+//testConfig[osapi.container.ContainerConfig.GET_CONTAINER_TOKEN] = function(callback) {
+//  gadgets.log('Updating container security token.');
+//  callback('john.doe:john.doe:appid:cont:url:0:default', 1000);
+//};
 
 //  Create the new CommonContainer
 var CommonContainer = new osapi.container.Container(testConfig);
