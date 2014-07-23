@@ -1,0 +1,4 @@
+﻿.gs-resize-handle,
+.gs-w.dragging .gs-resize-handle {
+    opacity: 1 !important;
+}

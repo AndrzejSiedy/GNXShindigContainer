@@ -39,9 +39,14 @@ var CommonContainer = new osapi.container.Container(testConfig);
 //Gadget site to title id map
 var siteToTitleMap = {};
 
+
+
 // Need to pull these from values supplied in the dialog
-CommonContainer.init = function() {
+CommonContainer.init = function () {
+
     
+
+
   //Create my new managed hub
   CommonContainer.managedHub = new OpenAjax.hub.ManagedHub({
     onSubscribe: function(topic, container) {

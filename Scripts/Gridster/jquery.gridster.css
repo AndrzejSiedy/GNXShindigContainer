@@ -96,12 +96,12 @@
 
 .gs-w:hover .gs-resize-handle,
 .resizing .gs-resize-handle {
-    opacity: 1;
+    opacity: 0;
 }
 
 .gs-resize-handle,
 .gs-w.dragging .gs-resize-handle {
-    opacity: 0;
+    opacity: 1;
 }
 
 .gs-resize-disabled .gs-resize-handle {

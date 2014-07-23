@@ -4,8 +4,13 @@
     roomId: null
 };
 
+
+
+
 $(document).ready(function () {
     var params = window.location.search.substring(1).split("&");
+
+    
 
     // load signalR hub and all
     $.getScript(params[0].split('=')[1])
@@ -23,4 +28,6 @@ $(document).ready(function () {
       .fail(function (jqxhr, settings, exception) {
           console.warn('failed to load SignalR Hubs js');
       });
+
+    
 });

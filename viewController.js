@@ -200,6 +200,8 @@ $(function() {
         });
 
         $('#' + $(element).find('iframe')[0].id).height(height - titleHeight - footerHeight);
+
+        gadgetManager['modulesContainers'].push($(element));
       
     };
 

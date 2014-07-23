@@ -5,6 +5,8 @@
 
     this.modulesContainers = [];
 
+    this.sizeFactor = null;
+
     var me = this;
 
     this.gridsterOptions = {
@@ -17,6 +19,28 @@
         helper: 'clone',
         //extra_rows: 1,
         //extra_cols: 1,
+        draggable: {
+            start: function (e, ui, $widget) {
+
+                gadgetManager.hideAll();
+
+                //var frameId = ui.$player.contents().find("iframe")[0].id;
+                //var iframe = $('#' + frameId);
+                //iframe.hide();
+                //log.innerHTML = 'START position: ' + ui.position.top +' '+ ui.position.left + "<br >" + log.innerHTML;
+            },
+            //drag: function (e, ui) {
+            //    console.warn('drag drag', arguments);
+            //    //log.innerHTML = 'DRAG offset: ' + ui.pointer.diff_top +' '+ ui.pointer.diff_left + "<br >" + log.innerHTML;
+            //},
+            stop: function (e, ui) {
+                gadgetManager.showAll();
+                //var frameId = ui.$player.contents().find("iframe")[0].id;
+                //var iframe = $('#' + frameId);
+                //iframe.show();
+                //log.innerHTML = 'STOP position: ' + ui.position.top +' '+ ui.position.left + "<br >" + log.innerHTML;
+            }
+        },
         resize: {
             enabled: true,
             //max_size: [4, 3],
@@ -24,10 +48,12 @@
             max_cols: 2,
             start: function (e, ui, $widget) {
 
-                var frameId = $widget.contents().find("iframe")[0].id;
-                var iframe = $('#' + frameId);
-                iframe.hide();
-                console.warn('resize start?', e, ui, $widget);
+                gadgetManager.hideAll();
+
+                //var frameId = $widget.contents().find("iframe")[0].id;
+                //var iframe = $('#' + frameId);
+                //iframe.hide();
+                //console.warn('resize start?', e, ui, $widget);
             },
             stop: function (e, ui, $widget) {
                 console.warn('resize end?', e, ui, $widget);
@@ -53,7 +79,9 @@
                 var iframe = $('#' + frameId);
                 iframe.height(afterResizeHeight);
 
-                iframe.show();
+                //iframe.show();
+
+                gadgetManager.showAll();
             }
         }
     };
@@ -63,7 +91,6 @@
 GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
 
     var gridster = $(".gridster > ul").gridster(this.gridsterOptions).data('gridster');
-
     var sizeFactor = 2;
 
     var divId = this.generateUUID();
@@ -73,7 +100,17 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
 
     var w = this.gridsterOptions.widget_base_dimensions[0] * sizeFactor;
     var h = this.gridsterOptions.widget_base_dimensions[1] * sizeFactor;
+
+    var urlParams = '?';
+    for (var e in SignalRSettings) {
+        urlParams += '&' + e + '=' + SignalRSettings[e];
+    }
+
+
+    gadgetUrl += urlParams;
     window.gnxPreloadAndAddGadget(gadgetUrl, divId, w, h);
+
+    //gadgetManager
 
 }
 
@@ -91,7 +128,25 @@ GnxGadgetManager.prototype.initGridster = function () {
     var gridster = $(".gridster ul").gridster(this.gridsterOptions).data('gridster');
 }
 
+GnxGadgetManager.prototype.showAll = function(){
+    //gadgetManager
+
+    for(var i = 0; i < gadgetManager.modulesContainers.length; i++){
+        gadgetManager.modulesContainers[i].show();
+    }
+
+}
+
+GnxGadgetManager.prototype.hideAll = function () {
+    //gadgetManager
+
+    for (var i = 0; i < gadgetManager.modulesContainers.length; i++) {
+        gadgetManager.modulesContainers[i].hide();
+    }
+
+}
 
 
 
-
+// Global variable
+var gadgetManager = new GnxGadgetManager();
