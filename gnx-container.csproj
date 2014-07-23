@@ -42,9 +42,13 @@
   <ItemGroup>
     <Content Include="assembler.js" />
     <Content Include="cconviews.js" />
+    <Content Include="Css\Site.css" />
+    <Content Include="test.html" />
     <Content Include="index.html" />
     <Content Include="layout.js" />
     <Content Include="sample-views.xml" />
+    <Content Include="Scripts\Gridster\bootstrap-colorselector.css" />
+    <Content Include="Scripts\Gridster\bootstrap-colorselector.js" />
     <Content Include="Scripts\Gridster\jquery.collision.js" />
     <Content Include="Scripts\Gridster\jquery.coords.js" />
     <Content Include="Scripts\Gridster\jquery.draggable.js" />
@@ -53,6 +57,8 @@
     <Content Include="Scripts\Gridster\jquery.gridster.js" />
     <Content Include="Scripts\Gridster\jquery.gridster.min.css" />
     <Content Include="Scripts\Gridster\jquery.gridster.min.js" />
+    <Content Include="Scripts\Gridster\jquery.gridster.responsive.css" />
+    <Content Include="Scripts\Gridster\jquery.gridster.responsive.js" />
     <Content Include="Scripts\Gridster\jquery.gridster.with-extras.js" />
     <Content Include="Scripts\Gridster\jquery.gridster.with-extras.min.js" />
     <Content Include="Scripts\Gridster\utils.js" />
