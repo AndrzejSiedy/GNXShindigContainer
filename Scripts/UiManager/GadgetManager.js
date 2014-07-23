@@ -56,7 +56,7 @@
                 //console.warn('resize start?', e, ui, $widget);
             },
             stop: function (e, ui, $widget) {
-                console.warn('resize end?', e, ui, $widget);
+                
                 var newHeight = this.resize_coords.data.height;
                 var newWidth = this.resize_coords.data.width;
 
