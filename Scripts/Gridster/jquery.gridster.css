@@ -1,4 +1,4 @@
-/*! gridster.js - v0.5.4 - 2014-07-16
+/*! gridster.js - v0.5.1 - 2014-03-26
 * http://gridster.net/
 * Copyright (c) 2014 ducksboard; Licensed MIT */
 
@@ -96,12 +96,12 @@
 
 .gs-w:hover .gs-resize-handle,
 .resizing .gs-resize-handle {
-    opacity: 0;
+    opacity: 1;
 }
 
 .gs-resize-handle,
 .gs-w.dragging .gs-resize-handle {
-    opacity: 1;
+    opacity: 0;
 }
 
 .gs-resize-disabled .gs-resize-handle {
@@ -114,7 +114,8 @@
     display: none !important;
 }
 
- /*Uncomment this if you set helper : "clone" in draggable options*/ 
-.gridster .player {
+/* Uncomment this if you set helper : "clone" in draggable options */
+/*.gridster .player {
   opacity:0;
 }
+*/
