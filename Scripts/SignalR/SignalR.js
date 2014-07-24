@@ -58,7 +58,14 @@ GnxSignalR.prototype.userLoggedInSuccess = function () {
 GnxSignalR.prototype.userLoggedOffSuccess = function () {
 }
 
-GnxSignalR.prototype.gadgetDropped = function (evtName, data) {
+GnxSignalR.prototype.gadgetDropped = function (evtName, evtData) {
+
+    console.warn('gadgetDroped', evtData.data);
+
+    if (evtData.data.GadgetUrl && evtData.data.GadgetUrl.length > 0) {
+        gadgetManager.addGadget(evtData.data.GadgetUrl);
+    }
+
 
     // create and load gadget
     //var gadgetUrl = "http://localhost:8088/gadgets/sample-pubsub-2-subscriber.xml";
@@ -94,16 +101,16 @@ GnxSignalR.prototype.gadgetDropped = function (evtName, data) {
 
     
     //gadgetManager.addGadget('http://www.labpixies.com/campaigns/todo/todo.xml');
-    gadgetManager.addGadget('http://localhost:8088/gadgets/TestGeoLoc.xml');
-    gadgetManager.addGadget('http://localhost:8088/gadgets/TestGeoLocGrid.xml');
+    //gadgetManager.addGadget('http://localhost:8088/gadgets/TestGeoLoc.xml');
+    //gadgetManager.addGadget('http://localhost:8088/gadgets/TestGeoLocGrid.xml');
 
 
-    gadgetManager.addGadget('http://localhost:8088/gadgets/sample-pubsub-2-subscriber.xml');
-    gadgetManager.addGadget('http://localhost:8088/gadgets/sample-pubsub-2-publisher.xml');
+    //gadgetManager.addGadget('http://localhost:8088/gadgets/sample-pubsub-2-subscriber.xml');
+    //gadgetManager.addGadget('http://localhost:8088/gadgets/sample-pubsub-2-publisher.xml');
 
-    gadgetManager.addGadget('http://edulifeline.com/includes/stocks_widget/widget.xml');
+    //gadgetManager.addGadget('http://edulifeline.com/includes/stocks_widget/widget.xml');
 
-    gadgetManager.addGadget('http://localhost:8088/gadgets/Hello.xml');
+    //gadgetManager.addGadget('http://localhost:8088/gadgets/Hello.xml');
     
 }
 
