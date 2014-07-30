@@ -5,6 +5,8 @@
 
     this.modulesContainers = [];
 
+    this.cols = 4;
+
     this.sizeFactor = null;
 
     var me = this;
@@ -12,11 +14,13 @@
     this.gridsterOptions = {
         //max_size_x: true,
         //max_size_y: true,
-        autogrow_cols: true, //allow for infinite x axis grow
+        autogrow_cols: false, //allow for infinite x axis grow
         avoid_overlapped_widgets: true,
         widget_base_dimensions: [100, 100],
         widget_margins: [2, 2],
         helper: 'clone',
+        //cols: this.cols,
+        max_cols: 1,
         //extra_rows: 1,
         //extra_cols: 1,
         draggable: {
@@ -45,7 +49,7 @@
             enabled: true,
             //max_size: [4, 3],
             min_size: [1, 1],
-            max_cols: 2,
+            max_cols: 1,
             start: function (e, ui, $widget) {
 
                 gadgetManager.hideAll();
@@ -90,8 +94,21 @@
 
 GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
 
+    alert('dupa');
+
     var gridster = $(".gridster > ul").gridster(this.gridsterOptions).data('gridster');
     var sizeFactor = 2;
+
+    //if (this.cols < 0) {
+    //    this.cols = this.cols + 1;
+    //}
+    //else {
+    //    this.cols = this.cols - 1;
+    //}
+
+    //gridster.apply(gridster, this.cols);
+    
+    //gridster.cols = this.cols;
 
     var divId = this.generateUUID();
     var widget = ['<li id=' + divId + '></li>', sizeFactor, sizeFactor];
@@ -110,6 +127,24 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
     gadgetUrl += urlParams;
     window.gnxPreloadAndAddGadget(gadgetUrl, divId, w, h);
 
+    gridster.set_dom_grid_width();
+
+
+    //var gridster = $(".gridster ul").gridster().data('gridster');
+    gridster.options.min_cols = 1; // Not necessarily required because of the following size changes, but I did it for clarity
+    gridster.options.cols = 1;
+    gridster.options.widget_base_dimensions = [240, 400];
+    gridster.options.min_widget_width = 240;
+
+    // This section was for existing widgets. Apparently the code for drawing the droppable zones is based on the data stored in the widgets at creation time
+    for (var i = 0; i < gridster.$widgets.length; i++) {
+        console.warn('ever here?', gridster.$widgets[i]);
+        gridster.resize_widget($(gridster.$widgets[i]), 1, 1);
+    }
+
+    gridster.generate_grid_and_stylesheet();
+
+    //gridster.resize_widget_dimensions(this.gridsterOptions);
     //gadgetManager
 
 }
