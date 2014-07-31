@@ -51,7 +51,7 @@
 
 
     <!--Gridster JS-->
-    <script src="./Scripts/Gridster/jquery.gridster.js"></script>
+    <script src="./Scripts/Gridster/jquery.gridster.with-extras.js"></script>
 
   
     <script type="text/javascript" src="./assembler.js"></script>
@@ -199,12 +199,41 @@
 
     <script src="Scripts/SignalR/SignalRSetup.js"></script>
 
+    <script>
+
+        //$(function () {
+        //    $(window).resize(function () {
+        //        $('head [generated-from="gridster"]:not(:last)').remove();
+        //        var widgetLength = $(window).width() / 12; // 12 columns.
+
+        //        var gridster = $(".gridster > ul").gridster(this.gridsterOptions).data('gridster');
+        //        //gadgetManager.gridsterOptions.widget_base_dimensions[1]
+        //        gridster.resize_widget_dimensions({ widget_base_dimensions: [widgetLength, gadgetManager.gridsterOptions.widget_base_dimensions[1]] });
+        //    });
+        //});
+
+
+        var resizeGridster = function () {
+            var gridster = $(".gridster > ul").gridster(gadgetManager.gridsterOptions).data('gridster');
+
+            $('.preview-holder').remove();
+
+
+            gridster.init();
+            console.warn('x');
+        }
+
+    </script>
+
 
 </head>
 
 <body onload="CommonContainer.init();">
 
   
+    <div style='display: block;'>
+        <button onclick="resizeGridster()">Call Gridster.init()</button>
+    </div>
       <div id="content">
 
         <!--this controlPanel has been hidden-->
