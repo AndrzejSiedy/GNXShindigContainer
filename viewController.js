@@ -127,10 +127,11 @@ $(function() {
         $(newGadgetSite).appendTo($('#' + injectDivId))
             .find('.portlet-header')
             .addClass('ui-widget-header ui-corner-all')
-            .text(gadgetTitle       )
+            .text(gadgetTitle)
+            .append('<span id="remove" class="ui-icon ui-icon-closethick"></span>')
             .append('<ul>' +
                    viewItems +
-                 '</ul>')
+                 '</ul>');
 
 
         return $('#gadget-site-' + curId).get([0]);

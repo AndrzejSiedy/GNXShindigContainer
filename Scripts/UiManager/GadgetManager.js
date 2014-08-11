@@ -199,8 +199,6 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
     gridster.set_dom_grid_width();
     gridster.set_dom_grid_height();
 
-    console.warn('gridster', gridster);
-
     //var gridster = $(".gridster ul").gridster().data('gridster');
     //gridster.options.min_cols = 1; // Not necessarily required because of the following size changes, but I did it for clarity
     ////gridster.options.widget_base_dimensions = [100, 100];
