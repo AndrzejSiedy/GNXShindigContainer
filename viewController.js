@@ -80,15 +80,23 @@ $(function() {
     };
 
     //handle gadget collapse, expand, and remove gadget actions
-    handleNavigateAction = function(portlet,gadgetSite,gadgetURL,actionId) {
+    handleNavigateAction = function (portlet, gadgetSite, gadgetURL, actionId, parentConteinerId) {
+
       //remove button was click, remove the portlet/gadget
       if(typeof gadgetSite !== 'undefined'){
-        if (actionId === 'remove') {
-          if (confirm('This gadget will be removed, ok?')) {
-            CommonContainer.closeGadget(gadgetSite);
-            portlet.remove();
-            delete siteToTitleMap[gadgetSite.getId()];
-          }
+          if (actionId === 'remove') {
+
+              if (confirm('This gadget will be removed, ok?')) {
+
+                CommonContainer.closeGadget(gadgetSite);
+                portlet.remove();
+                delete siteToTitleMap[gadgetSite.getId()];
+
+                // remove gridster widget
+                gadgetManager.removeGadget(parentConteinerId);
+            }
+
+
         }else if (actionId === 'expand') {
           //navigate to currentView prior to colapse gadget
           CommonContainer.navigateView(gadgetSite, gadgetURL, currentView);
@@ -181,10 +189,10 @@ $(function() {
       var element = window.getNewGadgetElement(result, gadgetURL, injectDivId);
       $(element).data('gadgetSite', CommonContainer.renderGadget(gadgetURL, curId));
 
-       //determine which button was click and handle the appropriate event.
-      //$('.portlet-header .ui-icon').click(function() {
-      //  handleNavigateAction($(this).closest('.portlet'), $(this).closest('.portlet').find('.portlet-content').data('gadgetSite'), gadgetURL, this.id);
-      //});
+      //determine which button was click and handle the appropriate event.
+      $('.portlet-header .ui-icon').click(function() {
+          handleNavigateAction($(this).closest('.portlet'), $(this).closest('.portlet').find('.portlet-content').data('gadgetSite'), gadgetURL, this.id, injectDivId);
+      });
 
         // get new height for iframe
         // calculated based on gridster cell height - portlet header height and - footer(resizer) height
@@ -216,7 +224,6 @@ $(function() {
                 }
             }
         });
-
     };
 
 

@@ -214,6 +214,15 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
 
 }
 
+
+GnxGadgetManager.prototype.removeGadget = function (idToRemove) {
+    var gridster = $(".gridster > ul").gridster(this.gridsterOptions).data('gridster');
+
+    // get widget with given id
+    var widGetEl = $('#' + idToRemove);
+    gridster.remove_widget(widGetEl[0]);
+}
+
 GnxGadgetManager.prototype.generateUUID = function() {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
