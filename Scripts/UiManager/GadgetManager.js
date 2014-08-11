@@ -13,11 +13,16 @@
 
 
     this.gridsterOptions = {
-        avoid_overlapped_widgets: false,
-        autogrow_cols: true,
+        avoid_overlapped_widgets: true,
         widget_base_dimensions: [100, 100],
-        widget_margins: [2, 2],
-        helper: 'clone',
+        widget_margins: [5, 5],
+        autogrow_cols: true,
+        //avoid_overlapped_widgets: true,
+        //autogrow_cols: true,
+        //widget_base_dimensions: [100, 100],
+        //widget_margins: [2, 2],
+        //helper: 'clone',
+        //axes: ['x', 'y'],
         draggable: {
             start: function (e, ui, $widget) {
 
@@ -43,8 +48,8 @@
         resize: {
             enabled: true,
             //max_size: [4, 3],
-            min_size: [1, 1],
-            max_size: [Infinity, Infinity],
+            //min_size: [1, 1],
+            //max_size: [Infinity, Infinity],
             //max_cols: 2,
             start: function (e, ui, $widget) {
 
@@ -57,6 +62,8 @@
             },
             stop: function (e, ui, $widget) {
 
+                // NOTE: 
+                // After widget gets resized, we need to tell internal iframe to set new size too
                 var newHeight = this.resize_coords.data.height;
                 var newWidth = this.resize_coords.data.width;
 
