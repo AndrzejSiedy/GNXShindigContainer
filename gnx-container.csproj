@@ -42,7 +42,19 @@
   <ItemGroup>
     <Content Include="assembler.js" />
     <Content Include="cconviews.js" />
+    <Content Include="Css\metro-ui\css\iconFont.min.css" />
+    <Content Include="Css\metro-ui\css\metro-bootstrap-responsive.css" />
+    <Content Include="Css\metro-ui\css\metro-bootstrap-responsive.min.css" />
+    <Content Include="Css\metro-ui\css\metro-bootstrap.css" />
+    <Content Include="Css\metro-ui\css\metro-bootstrap.min.css" />
+    <Content Include="Css\metro-ui\fonts\iconFont.dev.svg" />
+    <Content Include="Css\metro-ui\fonts\iconFont.svg" />
+    <Content Include="Css\metro-ui\fonts\metroSysIcons.svg" />
     <Content Include="Css\Site.css" />
+    <Content Include="Scripts\metro-ui\jquery.ui.widget.js" />
+    <Content Include="Scripts\metro-ui\metro.min.js" />
+    <Content Include="Scripts\SignalR\jquery.signalR-2.1.0.js" />
+    <Content Include="Scripts\SignalR\jquery.signalR-2.1.0.min.js" />
     <Content Include="test.html" />
     <Content Include="index.html" />
     <Content Include="layout.js" />
@@ -69,6 +81,12 @@
     <Content Include="viewController.js" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Css\metro-ui\fonts\iconFont.eot" />
+    <None Include="Css\metro-ui\fonts\iconFont.json" />
+    <None Include="Css\metro-ui\fonts\iconFont.ttf" />
+    <None Include="Css\metro-ui\fonts\iconFont.woff" />
+    <None Include="Css\metro-ui\fonts\metroSysIcons.ttf" />
+    <None Include="Css\metro-ui\fonts\metroSysIcons.woff" />
     <None Include="gadgetCollections.json" />
     <None Include="pubsub2.json" />
     <None Include="viewsMenu.json" />
