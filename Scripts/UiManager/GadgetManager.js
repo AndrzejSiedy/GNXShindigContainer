@@ -180,7 +180,22 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
     var sizeFactor = 2;
 
     var divId = this.generateUUID();
-    var widget = ['<li id=' + divId + '></li>', sizeFactor, sizeFactor];
+
+    var t = '<div class="gnx-widget-header gnx-widget-font">' +
+                    'Header' +
+            '</div>' +
+            '<div class="gnx-widget-center gnx-widget-font">' +
+                'container' +
+            '</div>' +
+            '<div class="gnx-widget-footer gnx-widget-font">' +
+                    'Footer' +
+            '</div>';
+
+
+                var widget = ['<li id=' + divId + '>' + t + '</li>'
+                    , sizeFactor, sizeFactor];
+
+    
 
     gridster.add_widget.apply(gridster, widget)
 
@@ -194,7 +209,7 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
 
 
     gadgetUrl += urlParams;
-    window.gnxPreloadAndAddGadget(gadgetUrl, divId, w, h);
+    //window.gnxPreloadAndAddGadget(gadgetUrl, divId, w, h);
 
     gridster.set_dom_grid_width();
     gridster.set_dom_grid_height();

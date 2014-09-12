@@ -37,6 +37,8 @@ $(function() {
 				                '<div id="gadget-site" class="portlet-content"></div>' +
 	                     '</div>';
 
+
+
 	//variable to keep track of gadget current view for collapse and expand gadget actions.
 	var currentView = 'default';
 
@@ -134,7 +136,7 @@ $(function() {
 
         $(newGadgetSite).appendTo($('#' + injectDivId))
             .find('.portlet-header')
-            .addClass('ui-widget-header ui-corner-all')
+            .addClass('ui-widget-header')
             .text(gadgetTitle)
             .append('<span id="remove" class="ui-icon ui-icon-closethick"></span>')
             .append('<ul>' +

@@ -3,4 +3,142 @@
     opacity: 1 !important;
 }
 
+.container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    max-width: 100%;
+    width: 100%;
+}
 
+
+body {
+    font-family: "Segoe UI", 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+    font-size: 16px;
+}
+
+
+.loadMask-parent {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    display: none;
+}
+
+.loadMask-child {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: -50px;
+    height: auto;
+    width: 100px;
+}
+
+
+
+
+/*Tile layout CSS - stop fit middle section with Thumbnail
+command bottom section with extra info, rating etc.*/
+.tile-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.tile-top {
+    height: 1px;
+    width: 100%;
+    /*background: grey;*/
+}
+
+.tile-middle {
+    top: 0px;
+    bottom: 80px;
+    width: 100%;
+    height: 70%;
+    /*background: black;*/
+}
+
+.tile-bottom {
+    bottom: 0;
+    /*height: 80px;*/
+    height: 30%;
+    width: 100%;
+    /*background: green;*/
+}
+
+.top, .middle, .bottom {
+    position: absolute;
+}
+
+
+
+.tile-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.tile-top {
+    height: 50px;
+    width: 100%;
+    background: grey;
+}
+
+.tile-middle {
+    top: 0px;
+    bottom: 0px; 
+    width: 100%;
+    /*height: 70%;*/
+    background: black;
+}
+
+.tile-bottom {
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+    background: green;
+}
+
+.gnx-widget-font{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.gnx-widget-header {
+    height: 35px;
+    background-color: white;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.gnx-widget-center {
+    height: calc(100% - (60px));	
+    background-color:white;
+}
+
+.gnx-widget-footer {
+    border-top: 1px solid #e9e9e9;
+    background-color: white;
+    height: 25px;
+}
+
+
+/*header{
+	height:64px;
+	background-color:#0C9;
+}
+footer{
+	height:64px;
+	background-color:#666;
+}
+.bodyPan{
+	height: calc(100% - 128px);	
+    background-color:red;
+}*/

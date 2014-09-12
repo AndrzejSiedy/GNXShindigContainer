@@ -87,7 +87,15 @@
 
   
     <style type="text/css">
-        .portlet-header .ui-icon { float: right; }
+        .portlet-header{
+            height: 25px;
+            background-color: #ff6a00 !important;
+        }
+
+        .portlet-header .ui-icon { 
+            float: right; 
+        }
+
         #content {
         display: table;
         width: 100%;
@@ -133,7 +141,7 @@
         #tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
 
         .resultTitle {
-        color: blue;
+            color: blue;
         }
 
         .searchEngine {
@@ -161,16 +169,18 @@
             margin-bottom: 0px;
         }
 
-        
-        .gridster ul {
-            background-color: #EFEFEF;
-        }
+
+        /*.gridster ul {
+            background-color: rgba(0, 60, 255, 0.49)
+        }*/
 
         .gridster li {
             font-size: 1em;
             font-weight: bold;
             text-align: center;
             line-height: 100%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 3px 8px rgba(0, 0, 0, 0.2);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
 
@@ -185,20 +195,20 @@
             transition: opacity .6s;
         }
 
-            .gridster .gs-w {
-                background: #DDD;
-                cursor: pointer;
-            }
+        .gridster .gs-w {
+            background: #DDD;
+            cursor: pointer;
+        }
 
-            .gridster .player {
-                background: #BBB;
-            }
+        .gridster .player {
+            background: #BBB;
+        }
 
 
-            .gridster .preview-holder {
-                border: none !important;
-                background: red !important;
-            }
+        .gridster .preview-holder {
+            border: none !important;
+            background: red !important;
+        }
     </style>
 
 
