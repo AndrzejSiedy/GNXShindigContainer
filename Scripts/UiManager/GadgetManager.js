@@ -182,7 +182,14 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
     var divId = this.generateUUID();
 
     var t = '<div class="gnx-widget-header gnx-widget-font">' +
-                    'Header' +
+                    //'<div class="caption">' +
+                        //'<div style="float:right;width:20px;height: 20px;font-family: "Cambria_","PT Serif Caption",Verdana,Arial,Helvetica,sans-serif;font-size: 16px !important;"><i class="icon-cancel-2"></i></div>' +
+                        '<i class="icon-cancel-2 pull-right" style="font-weight: lighter !important;padding-right: 10px; width: 15px; height:15px; margin-left: 0px; padding-top: 2px; margin-top: -5px; margin-right: 5px;"></i>' +
+                        '<i class="icon-window pull-right" style="padding-right: 10px; width: 15px; height:15px; margin-left: 0px; padding-top: 3px; margin-top: -5px; margin-right: 5px;"></i>' +
+                        '<i class="icon-minus-2 pull-right" style="padding-right: 10px; width: 15px; height:15px; margin-left: 0px; padding-top: 5px; margin-top: -5px; margin-right: 5px;"></i>' +
+                         
+                        '<div class="title">Bloody title</div>' + 
+                    //'</div>' +
             '</div>' +
             '<div class="gnx-widget-center gnx-widget-font">' +
                 'container' +

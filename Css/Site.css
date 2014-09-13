@@ -119,15 +119,17 @@ command bottom section with extra info, rating etc.*/
 .gnx-widget-header {
     height: 32px;
     text-align:left;
-    padding: 7px 5px;
     background-color: white;
+    width: 100%;
     border-bottom: 1px solid #e9e9e9;
     padding-left: 10px !important;
     padding-top: 7px !important;
     font-size: 14px !important;
+    position: absolute;
 }
 
 .gnx-widget-center {
+    margin-top: 32px !important;
     height: calc(100% - (57px));	
     background-color:white;
 }
@@ -137,6 +139,8 @@ command bottom section with extra info, rating etc.*/
     background-color: white;
     height: 25px;
 }
+
+
 
 
 /*header{
