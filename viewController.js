@@ -33,7 +33,7 @@ $(function() {
 
 	// Base html template that is used for the gadget wrapper and site
 	var gadgetTemplate = '<div class="portlet">' +
-				                '<div class="portlet-header">_sample_title_</div>' +
+				                //'<div class="portlet-header">_sample_title_</div>' +
 				                '<div id="gadget-site" class="portlet-content"></div>' +
 	                     '</div>';
 
@@ -187,6 +187,7 @@ $(function() {
 
     //create a gadget with navigation tool bar header enabling gadget collapse, expand, remove, navigate to view actions.
     window.buildGadget = function (result, gadgetURL, injectDivId, width, height) {
+
       result = result || {};
       var element = window.getNewGadgetElement(result, gadgetURL, injectDivId);
       $(element).data('gadgetSite', CommonContainer.renderGadget(gadgetURL, curId));
@@ -198,19 +199,23 @@ $(function() {
 
         // get new height for iframe
         // calculated based on gridster cell height - portlet header height and - footer(resizer) height
-      var titleHeight = 0;
-      $('#' + injectDivId).find('.portlet-header')
-        .each(function () {
-            titleHeight = $(this).height();
-        });
+      //var titleHeight = 0;
+      //$('#' + injectDivId).find('.portlet-header')
+      //  .each(function () {
+      //      titleHeight = $(this).height();
+      //  });
 
-      var footerHeight = 0;
-        $('#' + injectDivId).find('.gs-resize-handle')
-        .each(function () {
-            footerHeight = $(this).height();
-        });
+      //var footerHeight = 0;
+      //  $('#' + injectDivId).find('.gs-resize-handle')
+      //  .each(function () {
+      //      footerHeight = $(this).height();
+      //  });
 
-        $('#' + $(element).find('iframe')[0].id).height(height - titleHeight - footerHeight);
+        //$('#' + $(element).find('iframe')[0].id).height(height - titleHeight - footerHeight);
+        $('#' + $(element).find('iframe')[0].id).height($('#' + injectDivId).height());
+
+
+        //$('#' + $(element).find('iframe')[0].id).width('100%');
 
         gadgetManager['modulesContainers'].push($(element));
       

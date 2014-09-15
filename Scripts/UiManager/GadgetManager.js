@@ -47,47 +47,14 @@
         },
         resize: {
             enabled: true,
-            //max_size: [4, 3],
-            //min_size: [1, 1],
-            //max_size: [Infinity, Infinity],
-            //max_cols: 2,
             start: function (e, ui, $widget) {
-
+                // this is to prevent mouse events being disturbed
                 me.hideAll();
-
-                //var frameId = $widget.contents().find("iframe")[0].id;
-                //var iframe = $('#' + frameId);
-                //iframe.hide();
-                //console.warn('resize start?', e, ui, $widget);
             },
             stop: function (e, ui, $widget) {
-
                 // NOTE: 
                 // After widget gets resized, we need to tell internal iframe to set new size too
-                var newHeight = this.resize_coords.data.height;
-                var newWidth = this.resize_coords.data.width;
-
-                // get title
-                var titleHeight = 0;
-                $widget.find('.portlet-header')
-                  .each(function () {
-                      titleHeight = $(this).height();
-                  });
-
-                var footerHeight = 0;
-                $widget.find('.gs-resize-handle')
-                .each(function () {
-                    footerHeight = $(this).height();
-                });
-
-                var afterResizeHeight = newHeight - titleHeight - footerHeight;
-
-                var frameId = $widget.contents().find("iframe")[0].id;
-                var iframe = $('#' + frameId);
-                iframe.height(afterResizeHeight);
-
-                //iframe.show();
-
+                $widget.contents().find("iframe").height($widget.find('.gnx-widget-center').height());
                 me.showAll();
             }
         }
@@ -180,6 +147,7 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
     var sizeFactor = 2;
 
     var divId = this.generateUUID();
+    var contentId = this.generateUUID();
 
     var t = '<div class="gnx-widget-header gnx-widget-font">' +
                     //'<div class="caption">' +
@@ -191,32 +159,32 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
                         '<div class="title">Bloody title</div>' + 
                     //'</div>' +
             '</div>' +
-            '<div class="gnx-widget-center gnx-widget-font">' +
-                'container' +
+            '<div class="gnx-widget-center gnx-widget-font" id=' + contentId + '>' +
             '</div>' +
             '<div class="gnx-widget-footer gnx-widget-font">' +
                     'Footer' +
             '</div>';
 
 
-                var widget = ['<li id=' + divId + '>' + t + '</li>'
-                    , sizeFactor, sizeFactor];
+    var widget = ['<li id=' + divId + '>' + t + '</li>'
+        , sizeFactor, sizeFactor];
 
-    
+    var newGridsterWidget = gridster.add_widget.apply(gridster, widget);
 
-    gridster.add_widget.apply(gridster, widget)
-
-    var w = this.gridsterOptions.widget_base_dimensions[0] * sizeFactor;
-    var h = this.gridsterOptions.widget_base_dimensions[1] * sizeFactor;
+    // get width, height for gnx-widget-center
+    //var w = this.gridsterOptions.widget_base_dimensions[0] * sizeFactor;
+    //var h = this.gridsterOptions.widget_base_dimensions[1] * sizeFactor;
+    var w = $('#' + contentId).width();
+    var h = $('#' + contentId).height();
 
     var urlParams = '?';
     for (var e in SignalRSettings) {
         urlParams += '&' + e + '=' + SignalRSettings[e];
     }
 
-
     gadgetUrl += urlParams;
-    //window.gnxPreloadAndAddGadget(gadgetUrl, divId, w, h);
+
+    window.gnxPreloadAndAddGadget(gadgetUrl, contentId, w, h);
 
     gridster.set_dom_grid_width();
     gridster.set_dom_grid_height();
