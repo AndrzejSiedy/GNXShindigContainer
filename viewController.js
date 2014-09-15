@@ -115,7 +115,7 @@ $(function() {
 
 
 
-    window.getNewGadgetElement = function (result, gadgetURL, injectDivId) {
+    window.getNewGadgetElement = function (result, gadgetURL, injectDivId, data) {
 
         result[gadgetURL] = result[gadgetURL] || {};
         var gadgetSiteString = "$(this).closest(\'.portlet\').find(\'.portlet-content\').data(\'gadgetSite\')";
@@ -130,15 +130,9 @@ $(function() {
             injectDivId = 'gadgetArea';
         }
 
-        $(newGadgetSite).appendTo($('#' + injectDivId))
-            .find('.portlet-header')
-            .addClass('ui-widget-header')
-            .text(gadgetTitle)
-            .append('<span id="remove" class="ui-icon ui-icon-closethick"></span>')
-            .append('<ul>' +
-                   viewItems +
-                 '</ul>');
+        $('#' + injectDivId).parent().find('.title').text(data.Name);
 
+        $(newGadgetSite).appendTo($('#' + injectDivId));
 
         return $('#gadget-site-' + curId).get([0]);
     }
@@ -182,10 +176,10 @@ $(function() {
     }
 
     //create a gadget with navigation tool bar header enabling gadget collapse, expand, remove, navigate to view actions.
-    window.buildGadget = function (result, gadgetURL, injectDivId, width, height) {
+    window.buildGadget = function (result, gadgetURL, injectDivId, data) {
 
       result = result || {};
-      var element = window.getNewGadgetElement(result, gadgetURL, injectDivId);
+      var element = window.getNewGadgetElement(result, gadgetURL, injectDivId, data);
       $(element).data('gadgetSite', CommonContainer.renderGadget(gadgetURL, curId));
 
       //determine which button was click and handle the appropriate event.
@@ -198,11 +192,11 @@ $(function() {
       
     };
 
-    window.gnxPreloadAndAddGadget = function (url, divId, width, height) {
+    window.gnxPreloadAndAddGadget = function (url, divId, data) {
         CommonContainer.preloadGadget(url, function (result) {
             for (var gadgetURL in result) {
                 if (!result[gadgetURL].error) {
-                    window.buildGadget(result, gadgetURL, divId, width, height);
+                    window.buildGadget(result, gadgetURL, divId, data);
                     curId++;
                 }
             }

@@ -43,7 +43,7 @@
     }
 }
 
-GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
+GnxGadgetManager.prototype.addGadget = function (data) {
 
     var gridster = $(".gridster > ul").gridster(this.gridsterOptions).data('gridster');
     var sizeFactor = 2;
@@ -55,7 +55,7 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
                         '<i class="icon-cancel-2 pull-right" style="font-weight: lighter !important;padding-right: 10px; width: 15px; height:15px; margin-left: 0px; padding-top: 2px; margin-top: -5px; margin-right: 5px;"></i>' +
                         '<i class="icon-window pull-right" style="padding-right: 10px; width: 15px; height:15px; margin-left: 0px; padding-top: 3px; margin-top: -5px; margin-right: 5px;"></i>' +
                         '<i class="icon-minus-2 pull-right" style="padding-right: 10px; width: 15px; height:15px; margin-left: 0px; padding-top: 5px; margin-top: -5px; margin-right: 5px;"></i>' +
-                        '<div class="title">Bloody title</div>' + 
+                        '<div class="title"></div>' + 
             '</div>' +
             '<div class="gnx-widget-center gnx-widget-font" id=' + contentId + '>' +
             '</div>' +
@@ -77,10 +77,8 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
     for (var e in SignalRSettings) {
         urlParams += '&' + e + '=' + SignalRSettings[e];
     }
-
-    gadgetUrl += urlParams;
-
-    window.gnxPreloadAndAddGadget(gadgetUrl, contentId, w, h);
+    
+    window.gnxPreloadAndAddGadget(data.GadgetUrl + urlParams, contentId, data);
 
     gridster.set_dom_grid_width();
     gridster.set_dom_grid_height();

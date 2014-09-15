@@ -63,7 +63,7 @@ GnxSignalR.prototype.gadgetDropped = function (evtName, evtData) {
     console.warn('gadgetDroped', evtData.data);
 
     if (evtData.data.GadgetUrl && evtData.data.GadgetUrl.length > 0) {
-        gadgetManager.addGadget(evtData.data.GadgetUrl);
+        gadgetManager.addGadget(evtData.data);
     }
 
 
