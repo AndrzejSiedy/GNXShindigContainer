@@ -77,10 +77,8 @@ GnxGadgetManager.prototype.addGadget = function (data) {
                     '<div class="title">Bloody title</div>' +
                 '</div>' +
                 '<div id=' + contentId + ' class="content gnx-widget-center" style="height: calc(100% - (57px)) !important;padding: 0px !important;">' +
-                    'dupa tam' +
                 '</div>' +
                 '<div class="gnx-widget-footer gnx-widget-font">' +
-                    'Footer' +
                 '</div>'
             '</div>' +
         '</div>';
@@ -99,7 +97,7 @@ GnxGadgetManager.prototype.addGadget = function (data) {
         urlParams += '&' + e + '=' + SignalRSettings[e];
     }
     
-    //window.gnxPreloadAndAddGadget(data.GadgetUrl + urlParams, contentId, data);
+    window.gnxPreloadAndAddGadget(data.GadgetUrl + urlParams, contentId, data);
 
     gridster.set_dom_grid_width();
     gridster.set_dom_grid_height();
@@ -109,7 +107,6 @@ GnxGadgetManager.prototype.addGadget = function (data) {
 
 GnxGadgetManager.prototype.removeGadget = function (idToRemove) {
     var gridster = $(".gridster > ul").gridster(this.gridsterOptions).data('gridster');
-
     // get widget with given id
     var widGetEl = $('#' + idToRemove);
     gridster.remove_widget(widGetEl[0]);
