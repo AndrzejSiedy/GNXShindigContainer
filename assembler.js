@@ -125,7 +125,7 @@ CommonContainer.collapseGadget = function(gadgetSite) {
 
 //display the pubsub 2 event details
 function log(message) {
-  document.getElementById('output').innerHTML = gadgets.util.escapeString(message) + '<br/>' + document.getElementById('output').innerHTML;
+  //document.getElementById('output').innerHTML = gadgets.util.escapeString(message) + '<br/>' + document.getElementById('output').innerHTML;
 }
 
 var lifecycle = function() {
