@@ -9,7 +9,7 @@
 
 GnxSignalR.prototype.initSignalR = function (signalRHubUrl, hubName, roomId) {
 
-    
+
 
     if (signalRHubUrl) {
         this.signalRHubUrl = signalRHubUrl;
@@ -99,7 +99,7 @@ GnxSignalR.prototype.gadgetDropped = function (evtName, evtData) {
     //$('#gadgetUrl').val('http://localhost:8088/gadgets/sample-pubsub-2-publisher.xml');
     //$('#preloadAndAddGadget').click();
 
-    
+
     //gadgetManager.addGadget('http://www.labpixies.com/campaigns/todo/todo.xml');
     //gadgetManager.addGadget('http://localhost:8088/gadgets/TestGeoLoc.xml');
     //gadgetManager.addGadget('http://localhost:8088/gadgets/TestGeoLocGrid.xml');
@@ -111,7 +111,7 @@ GnxSignalR.prototype.gadgetDropped = function (evtName, evtData) {
     //gadgetManager.addGadget('http://edulifeline.com/includes/stocks_widget/widget.xml');
 
     //gadgetManager.addGadget('http://localhost:8088/gadgets/Hello.xml');
-    
+
 }
 
 

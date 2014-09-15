@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations under the License.
  */
 
-$(function() {
+$(function () {
 
     // Input field that contains gadget urls added by the user manually
     var newGadgetUrl = $('#gadgetUrl');
@@ -48,13 +48,13 @@ $(function() {
     $.ajax({
         url: './gadgetCollections.json',
         dataType: 'json',
-        success: function(data) {
-            $.each(data.collections, function(i,data) {
+        success: function (data) {
+            $.each(data.collections, function (i, data) {
                 var optionVal = [];
-                $.each(data.apps, function(i,data) {
+                $.each(data.apps, function (i, data) {
                     if (data.url.indexOf('http') < 0 && data.url.indexOf('/') == 0) {
                         optionVal.push(urlBase + data.url);
-                    }else {
+                    } else {
                         optionVal.push(data.url);
                     }
                 });
@@ -66,15 +66,15 @@ $(function() {
     $.ajax({
         url: './viewsMenu.json',
         dataType: 'json',
-        success: function(data) {
-            $.each(data.views, function(i,selection) {
+        success: function (data) {
+            $.each(data.views, function (i, selection) {
                 $('#viewOptions').append('<option value="' + selection.value + '">' + selection.name + '</option>');
             });
         }
     });
 
     //navigate to the new view and save it as current view
-    navigateView = function(gadgetSite, gadgetURL, toView) {
+    navigateView = function (gadgetSite, gadgetURL, toView) {
         //save the current view for collapse, expand gadget
         currentView = toView;
         CommonContainer.navigateView(gadgetSite, gadgetURL, toView);
@@ -84,7 +84,7 @@ $(function() {
     handleNavigateAction = function (portlet, gadgetSite, gadgetURL, actionId, parentConteinerId) {
 
         //remove button was click, remove the portlet/gadget
-        if(typeof gadgetSite !== 'undefined'){
+        if (typeof gadgetSite !== 'undefined') {
             if (actionId === 'remove') {
 
                 if (confirm('This gadget will be removed, ok?')) {
@@ -98,10 +98,10 @@ $(function() {
                 }
 
 
-            }else if (actionId === 'expand') {
+            } else if (actionId === 'expand') {
                 //navigate to currentView prior to colapse gadget
                 CommonContainer.navigateView(gadgetSite, gadgetURL, currentView);
-            }else if (actionId === 'collapse') {
+            } else if (actionId === 'collapse') {
                 CommonContainer.collapseGadget(gadgetSite);
             }
         }
@@ -127,7 +127,7 @@ $(function() {
     }
 
     //RPC handler for the set-title feature
-    window.setTitleHandler = function(rpcArgs, title) {
+    window.setTitleHandler = function (rpcArgs, title) {
         var titleId = siteToTitleMap[rpcArgs.gs.id_];
         $('#' + titleId).text(title);
     };
@@ -156,7 +156,7 @@ $(function() {
         return $('#gadget-site-' + curId).get([0]);
     }
 
-    window.getNewGadgetElementOriginal = function(result, gadgetURL, injectDivId){
+    window.getNewGadgetElementOriginal = function (result, gadgetURL, injectDivId) {
         result[gadgetURL] = result[gadgetURL] || {};
         var gadgetSiteString = "$(this).closest(\'.portlet\').find(\'.portlet-content\').data(\'gadgetSite\')";
         var viewItems = '';
@@ -191,7 +191,7 @@ $(function() {
         .append('<span id="expand" class="ui-icon ui-icon-plusthick"></span>')
         .append('<span id="collapse" class="ui-icon ui-icon-minusthick"></span>');
 
-        return $('#gadget-site-'+curId).get([0]);
+        return $('#gadget-site-' + curId).get([0]);
     }
 
     //create a gadget with navigation tool bar header enabling gadget collapse, expand, remove, navigate to view actions.
@@ -216,32 +216,29 @@ $(function() {
         var gadgetSite = portlet.find('.portlet-content').data('gadgetSite');
 
 
-      if (btnMin) {
-          $(btnMin).click(function (element) { console.warn('btnMin clicked'); });
-      }
-      if (btnMax) {
-          $(btnMax).click(function (element) { console.warn('btnMax clicked'); });
-      }
-      if (btnClose) {
+        if (btnMin) {
+            $(btnMin).click(function (element) { console.warn('btnMin clicked'); });
+        }
+        if (btnMax) {
+            $(btnMax).click(function (element) { console.warn('btnMax clicked'); });
+        }
+        if (btnClose) {
 
+            $(btnClose).click(
+                  { // pass parameter for click callback alert(event.data.param1);
+                      portlet: portlet,
+                      gadgetSite: gadgetSite,
+                      listId: $('#' + injectDivId).parent().parent().parent()[0].id
+                  },
+                  closeWidget
+              );
+        }
 
-          console.warn('????', $('#' + injectDivId).parent().parent().parent(), $('#' + injectDivId).parent().parent().parent()[0].id);
-
-          $(btnClose).click(
-                { // pass parameter for click callback alert(event.data.param1);
-                    portlet: portlet,
-                    gadgetSite: gadgetSite,
-                    listId: $('#' + injectDivId).parent().parent().parent()[0].id
-                },
-                closeWidget
-            );
-      }
-      
 
         $('#' + $(element).find('iframe')[0].id).height($('#' + injectDivId).height());
 
         gadgetManager['modulesContainers'].push($(element));
-      
+
     };
 
     window.gnxPreloadAndAddGadget = function (url, divId, data) {

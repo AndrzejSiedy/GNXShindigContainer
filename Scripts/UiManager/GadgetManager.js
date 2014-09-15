@@ -67,7 +67,7 @@ GnxGadgetManager.prototype.addGadget = function (data) {
 
 
     // new template is a variation of Metro UI window to show nice buttons
-    var t = 
+    var t =
         '<div class="metro" style="position:absolute !important; width: 100%;height:100%;">' +
             '<div class="window flat" style="overflow: hidden; position: relative; width: 100%; height: 100%;">' +
                 '<div class="caption gnx-widget-header">' +
@@ -80,8 +80,8 @@ GnxGadgetManager.prototype.addGadget = function (data) {
                 '</div>' +
                 '<div class="gnx-widget-footer gnx-widget-font">' +
                 '</div>'
-            '</div>' +
-        '</div>';
+    '</div>' +
+'</div>';
 
     var widget = ['<li id=' + divId + '>' + t + '</li>'
         , sizeFactor, sizeFactor];
@@ -96,7 +96,7 @@ GnxGadgetManager.prototype.addGadget = function (data) {
     for (var e in SignalRSettings) {
         urlParams += '&' + e + '=' + SignalRSettings[e];
     }
-    
+
     window.gnxPreloadAndAddGadget(data.GadgetUrl + urlParams, contentId, data);
 
     gridster.set_dom_grid_width();
@@ -112,7 +112,7 @@ GnxGadgetManager.prototype.removeGadget = function (idToRemove) {
     gridster.remove_widget(widGetEl[0]);
 }
 
-GnxGadgetManager.prototype.generateUUID = function() {
+GnxGadgetManager.prototype.generateUUID = function () {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = (d + Math.random() * 16) % 16 | 0;
@@ -126,10 +126,10 @@ GnxGadgetManager.prototype.initGridster = function () {
     var gridster = $(".gridster ul").gridster(this.gridsterOptions).data('gridster');
 }
 
-GnxGadgetManager.prototype.showAll = function(){
+GnxGadgetManager.prototype.showAll = function () {
     //gadgetManager
 
-    for(var i = 0; i < gadgetManager.modulesContainers.length; i++){
+    for (var i = 0; i < gadgetManager.modulesContainers.length; i++) {
         gadgetManager.modulesContainers[i].show();
     }
 
