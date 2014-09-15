@@ -17,32 +17,14 @@
         widget_base_dimensions: [100, 100],
         widget_margins: [5, 5],
         autogrow_cols: true,
-        //avoid_overlapped_widgets: true,
-        //autogrow_cols: true,
-        //widget_base_dimensions: [100, 100],
-        //widget_margins: [2, 2],
-        //helper: 'clone',
-        //axes: ['x', 'y'],
         draggable: {
             start: function (e, ui, $widget) {
-
                 me.hideAll();
-
-                //var frameId = ui.$player.contents().find("iframe")[0].id;
-                //var iframe = $('#' + frameId);
-                //iframe.hide();
-                //log.innerHTML = 'START position: ' + ui.position.top +' '+ ui.position.left + "<br >" + log.innerHTML;
             },
             //drag: function (e, ui) {
-            //    console.warn('drag drag', arguments);
-            //    //log.innerHTML = 'DRAG offset: ' + ui.pointer.diff_top +' '+ ui.pointer.diff_left + "<br >" + log.innerHTML;
             //},
             stop: function (e, ui) {
                 me.showAll();
-                //var frameId = ui.$player.contents().find("iframe")[0].id;
-                //var iframe = $('#' + frameId);
-                //iframe.show();
-                //log.innerHTML = 'STOP position: ' + ui.position.top +' '+ ui.position.left + "<br >" + log.innerHTML;
             }
         },
         resize: {
@@ -59,86 +41,6 @@
             }
         }
     }
-
-    //this.gridsterOptions = {
-    //    //max_size_x: true,
-    //    //max_size_y: true,
-    //    autogrow_cols: true, //allow for infinite x axis grow
-    //    avoid_overlapped_widgets: true,
-    //    widget_base_dimensions: [100, 100],
-    //    widget_margins: [2, 2],
-    //    helper: 'clone',
-    //    max_cols: 2,
-    //    axes: ['x', 'y'],
-    //    //extra_rows: 1,
-    //    //extra_cols: 1,
-    //    draggable: {
-    //        start: function (e, ui, $widget) {
-
-    //            gadgetManager.hideAll();
-
-    //            //var frameId = ui.$player.contents().find("iframe")[0].id;
-    //            //var iframe = $('#' + frameId);
-    //            //iframe.hide();
-    //            //log.innerHTML = 'START position: ' + ui.position.top +' '+ ui.position.left + "<br >" + log.innerHTML;
-    //        },
-    //        //drag: function (e, ui) {
-    //        //    console.warn('drag drag', arguments);
-    //        //    //log.innerHTML = 'DRAG offset: ' + ui.pointer.diff_top +' '+ ui.pointer.diff_left + "<br >" + log.innerHTML;
-    //        //},
-    //        stop: function (e, ui) {
-    //            gadgetManager.showAll();
-    //            //var frameId = ui.$player.contents().find("iframe")[0].id;
-    //            //var iframe = $('#' + frameId);
-    //            //iframe.show();
-    //            //log.innerHTML = 'STOP position: ' + ui.position.top +' '+ ui.position.left + "<br >" + log.innerHTML;
-    //        }
-    //    },
-    //    resize: {
-    //        enabled: true,
-    //        //max_size: [4, 3],
-    //        min_size: [1, 1],
-    //        max_cols: 2,
-    //        start: function (e, ui, $widget) {
-
-    //            gadgetManager.hideAll();
-
-    //            //var frameId = $widget.contents().find("iframe")[0].id;
-    //            //var iframe = $('#' + frameId);
-    //            //iframe.hide();
-    //            //console.warn('resize start?', e, ui, $widget);
-    //        },
-    //        stop: function (e, ui, $widget) {
-                
-    //            var newHeight = this.resize_coords.data.height;
-    //            var newWidth = this.resize_coords.data.width;
-
-    //            // get title
-    //            var titleHeight = 0;
-    //            $widget.find('.portlet-header')
-    //              .each(function () {
-    //                  titleHeight = $(this).height();
-    //              });
-
-    //            var footerHeight = 0;
-    //            $widget.find('.gs-resize-handle')
-    //            .each(function () {
-    //                footerHeight = $(this).height();
-    //            });
-
-    //            var afterResizeHeight = newHeight - titleHeight - footerHeight;
-
-    //            var frameId = $widget.contents().find("iframe")[0].id;
-    //            var iframe = $('#' + frameId);
-    //            iframe.height(afterResizeHeight);
-
-    //            //iframe.show();
-
-    //            gadgetManager.showAll();
-    //        }
-    //    }
-    //};
-
 }
 
 GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
@@ -150,14 +52,10 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
     var contentId = this.generateUUID();
 
     var t = '<div class="gnx-widget-header gnx-widget-font">' +
-                    //'<div class="caption">' +
-                        //'<div style="float:right;width:20px;height: 20px;font-family: "Cambria_","PT Serif Caption",Verdana,Arial,Helvetica,sans-serif;font-size: 16px !important;"><i class="icon-cancel-2"></i></div>' +
                         '<i class="icon-cancel-2 pull-right" style="font-weight: lighter !important;padding-right: 10px; width: 15px; height:15px; margin-left: 0px; padding-top: 2px; margin-top: -5px; margin-right: 5px;"></i>' +
                         '<i class="icon-window pull-right" style="padding-right: 10px; width: 15px; height:15px; margin-left: 0px; padding-top: 3px; margin-top: -5px; margin-right: 5px;"></i>' +
                         '<i class="icon-minus-2 pull-right" style="padding-right: 10px; width: 15px; height:15px; margin-left: 0px; padding-top: 5px; margin-top: -5px; margin-right: 5px;"></i>' +
-                         
                         '<div class="title">Bloody title</div>' + 
-                    //'</div>' +
             '</div>' +
             '<div class="gnx-widget-center gnx-widget-font" id=' + contentId + '>' +
             '</div>' +
@@ -172,8 +70,6 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
     var newGridsterWidget = gridster.add_widget.apply(gridster, widget);
 
     // get width, height for gnx-widget-center
-    //var w = this.gridsterOptions.widget_base_dimensions[0] * sizeFactor;
-    //var h = this.gridsterOptions.widget_base_dimensions[1] * sizeFactor;
     var w = $('#' + contentId).width();
     var h = $('#' + contentId).height();
 
@@ -188,19 +84,6 @@ GnxGadgetManager.prototype.addGadget = function (gadgetUrl) {
 
     gridster.set_dom_grid_width();
     gridster.set_dom_grid_height();
-
-    //var gridster = $(".gridster ul").gridster().data('gridster');
-    //gridster.options.min_cols = 1; // Not necessarily required because of the following size changes, but I did it for clarity
-    ////gridster.options.widget_base_dimensions = [100, 100];
-    ////gridster.options.min_widget_width = 100;
-
-    //// This section was for existing widgets. Apparently the code for drawing the droppable zones is based on the data stored in the widgets at creation time
-    //for (var i = 0; i < gridster.$widgets.length; i++) {
-    //    gridster.resize_widget($(gridster.$widgets[i]), 1, 1);
-    //}
-
-    //gridster.generate_grid_and_stylesheet();
-    //gadgetManager
 
 }
 
