@@ -148,12 +148,10 @@ GnxGadgetManager.prototype.hideAll = function () {
 }
 
 GnxGadgetManager.prototype.onBeforeRender = function () {
-    console.warn('heard on before render', arguments);
     $('#' + this.curentDOMWidgetId).showLoadMask();
 }
 
 GnxGadgetManager.prototype.onRender = function () {
-    console.warn('heard on render', arguments);
     $('#' + this.curentDOMWidgetId).hideLoadMask();
 }
 
