@@ -3,6 +3,8 @@
     this.roomId = null;
     this.clientName = null;
 
+    this.curentDOMWidgetId = null;
+
     this.modulesContainers = [];
 
     this.cols = 4;
@@ -10,7 +12,6 @@
     this.sizeFactor = null;
 
     var me = this;
-
 
     this.gridsterOptions = {
         avoid_overlapped_widgets: true,
@@ -71,8 +72,8 @@ GnxGadgetManager.prototype.addGadget = function (data) {
         '<div class="metro" style="position:absolute !important; width: 100%;height:100%;">' +
             '<div class="window flat" style="overflow: hidden; position: relative; width: 100%; height: 100%;">' +
                 '<div class="caption gnx-widget-header">' +
-                    '<button class="btn-min"></button>' +
-                    '<button class="btn-max"></button>' +
+                    //'<button class="btn-min"></button>' +
+                    //'<button class="btn-max"></button>' +
                     '<button class="btn-close"></button>' +
                     '<div class="title">Bloody title</div>' +
                 '</div>' +
@@ -87,6 +88,8 @@ GnxGadgetManager.prototype.addGadget = function (data) {
         , sizeFactor, sizeFactor];
 
     var newGridsterWidget = gridster.add_widget.apply(gridster, widget);
+
+    this.curentDOMWidgetId = divId;
 
     // get width, height for gnx-widget-center
     var w = $('#' + contentId).width();
@@ -144,7 +147,17 @@ GnxGadgetManager.prototype.hideAll = function () {
 
 }
 
+GnxGadgetManager.prototype.onBeforeRender = function () {
+    console.warn('heard on before render', arguments);
+    $('#' + this.curentDOMWidgetId).showLoadMask();
+}
+
+GnxGadgetManager.prototype.onRender = function () {
+    console.warn('heard on render', arguments);
+    $('#' + this.curentDOMWidgetId).hideLoadMask();
+}
 
 
 // Global variable
 var gadgetManager = new GnxGadgetManager();
+
