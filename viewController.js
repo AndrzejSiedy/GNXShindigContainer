@@ -45,33 +45,33 @@ $(function () {
     var curId = 0;
 
     //  Load the default collections stored and update the options with the collection name
-    $.ajax({
-        url: './gadgetCollections.json',
-        dataType: 'json',
-        success: function (data) {
-            $.each(data.collections, function (i, data) {
-                var optionVal = [];
-                $.each(data.apps, function (i, data) {
-                    if (data.url.indexOf('http') < 0 && data.url.indexOf('/') == 0) {
-                        optionVal.push(urlBase + data.url);
-                    } else {
-                        optionVal.push(data.url);
-                    }
-                });
-                $('#gadgetCollection').append('<option value="' + optionVal.toString() + '">' + data.name + '</option>');
-            });
-        }
-    });
+    //$.ajax({
+    //    url: './gadgetCollections.json',
+    //    dataType: 'json',
+    //    success: function (data) {
+    //        $.each(data.collections, function (i, data) {
+    //            var optionVal = [];
+    //            $.each(data.apps, function (i, data) {
+    //                if (data.url.indexOf('http') < 0 && data.url.indexOf('/') == 0) {
+    //                    optionVal.push(urlBase + data.url);
+    //                } else {
+    //                    optionVal.push(data.url);
+    //                }
+    //            });
+    //            $('#gadgetCollection').append('<option value="' + optionVal.toString() + '">' + data.name + '</option>');
+    //        });
+    //    }
+    //});
 
-    $.ajax({
-        url: './viewsMenu.json',
-        dataType: 'json',
-        success: function (data) {
-            $.each(data.views, function (i, selection) {
-                $('#viewOptions').append('<option value="' + selection.value + '">' + selection.name + '</option>');
-            });
-        }
-    });
+    //$.ajax({
+    //    url: './viewsMenu.json',
+    //    dataType: 'json',
+    //    success: function (data) {
+    //        $.each(data.views, function (i, selection) {
+    //            $('#viewOptions').append('<option value="' + selection.value + '">' + selection.name + '</option>');
+    //        });
+    //    }
+    //});
 
     //navigate to the new view and save it as current view
     navigateView = function (gadgetSite, gadgetURL, toView) {
@@ -199,6 +199,7 @@ $(function () {
 
         result = result || {};
         var element = window.getNewGadgetElement(result, gadgetURL, injectDivId, data);
+
         $(element).data('gadgetSite', CommonContainer.renderGadget(gadgetURL, curId));
 
         //determine which button was click and handle the appropriate event.
