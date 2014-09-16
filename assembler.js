@@ -130,7 +130,7 @@ function log(message) {
 }
 
 var lifecycle = function () {
-    console.warn('lifecycle', osapi.container);
+    
   var preloadStart;
   var navigateStart;
   var closeStart;
