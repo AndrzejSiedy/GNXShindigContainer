@@ -42,6 +42,8 @@
   <ItemGroup>
     <Content Include="assembler.js" />
     <Content Include="cconviews.js" />
+    <Content Include="Css\Images\animated-gif-online-creator.txt" />
+    <Content Include="Css\Images\loading-blue.gif" />
     <Content Include="Css\metro-ui\css\iconFont.min.css" />
     <Content Include="Css\metro-ui\css\metro-bootstrap-responsive.css" />
     <Content Include="Css\metro-ui\css\metro-bootstrap-responsive.min.css" />
@@ -55,6 +57,8 @@
     <Content Include="Scripts\metro-ui\metro.min.js" />
     <Content Include="Scripts\SignalR\jquery.signalR-2.1.0.js" />
     <Content Include="Scripts\SignalR\jquery.signalR-2.1.0.min.js" />
+    <Content Include="Scripts\UiManager\MetroDialogs.js" />
+    <Content Include="Scripts\UiManager\Utils.js" />
     <Content Include="test.html" />
     <Content Include="index.html" />
     <Content Include="layout.js" />

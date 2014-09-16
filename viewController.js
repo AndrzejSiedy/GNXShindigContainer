@@ -107,22 +107,32 @@ $(function () {
         }
     };
 
-    closeWidget = function (evt) {
+    removeWidget = function (evt) {
         var portlet = evt.data.portlet;
         var gadgetSite = evt.data.gadgetSite;
         var listId = evt.data.listId;
 
         //remove button was click, remove the portlet/gadget
         if (typeof gadgetSite !== 'undefined') {
-            if (confirm('This gadget will be removed, ok?')) {
 
-                CommonContainer.closeGadget(gadgetSite);
-                portlet.remove();
-                delete siteToTitleMap[gadgetSite.getId()];
+            // Show nice confirmation dialog
+            $.ConfirmationDialog({
+                title: '<div class="fg-orange">Question</div>',
+                message: 'This gadget will be removed, ok?',
+                width: 250,
+                height: 150,
+                onOk: function (evt) {
+                    CommonContainer.closeGadget(gadgetSite);
+                    portlet.remove();
+                    delete siteToTitleMap[gadgetSite.getId()];
 
-                // remove gridster widget
-                gadgetManager.removeGadget(listId);
-            }
+                    // remove gridster widget
+                    gadgetManager.removeGadget(listId);
+                },
+                onCancel: function (evt) {
+                    //console.warn('cancel', evt.data)
+                }
+            });
         }
     }
 
@@ -231,7 +241,7 @@ $(function () {
                       gadgetSite: gadgetSite,
                       listId: $('#' + injectDivId).parent().parent().parent()[0].id
                   },
-                  closeWidget
+                  removeWidget
               );
         }
 

@@ -75,6 +75,7 @@
 
     
     <script src="Scripts/UiManager/Utils.js"></script>
+    <script src="Scripts/UiManager/MetroDialogs.js"></script>
     <script src="Scripts/UiManager/GadgetManager.js"></script>
     <script src="Scripts/SignalR/SignalR.js"></script>
 
@@ -213,6 +214,7 @@
             border: none !important;
             background: red !important;
         }
+
     </style>
 
 
@@ -240,16 +242,15 @@
             });
 
             $('#showDialog').click(function () {
-                $.Dialog({
-                    flat: true,
-                    shadow: true,
-                    title: 'Test window',
-                    content: 'Test window content',
-                    height: 200,
-                    sysButtons: {
-                        btnClose: true, 
-                        btnMax: true, 
-                        btnMin: true
+                $.ConfirmationDialog({
+                    title: '666',
+                    icon: '',
+                    message: 'a w morde jeza nietoperzasdvcsadvsadvasdvasdvsadvasdvsav',
+                    onOk: function (evt) {
+                        console.warn('ok', evt.data);
+                    },
+                    onCancel: function (evt) {
+                        console.warn('cancel', evt.data)
                     }
                 });
             });

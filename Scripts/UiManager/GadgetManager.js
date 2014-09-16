@@ -75,7 +75,7 @@ GnxGadgetManager.prototype.addGadget = function (data) {
                     //'<button class="btn-min"></button>' +
                     //'<button class="btn-max"></button>' +
                     '<button class="btn-close"></button>' +
-                    '<div class="title">Bloody title</div>' +
+                    '<div class="title"></div>' +
                 '</div>' +
                 '<div id=' + contentId + ' class="content gnx-widget-center" style="height: calc(100% - (57px)) !important;padding: 0px !important;">' +
                 '</div>' +
