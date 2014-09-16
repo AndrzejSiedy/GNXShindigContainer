@@ -109,6 +109,8 @@ GnxGadgetManager.prototype.addGadget = function (data) {
         data: data
     });
 
+    console.warn('registered modules count', this.moduleContainers.length);
+
 
 }
 
@@ -120,10 +122,18 @@ GnxGadgetManager.prototype.removeGadget = function (idToRemove) {
     gridster.remove_widget(widGetEl[0]);
 
 
-    // remove widget from array after its being removed from system
-    items = $.grep(this.moduleContainers, function (item) {
-        return item.containerId !== idToRemove;
-    });
+    //// remove widget from array after its being removed from system
+    //var items = $.grep(this.moduleContainers, function (item) {
+    //    return item.containerId != idToRemove;
+    //});
+
+    for (var i = 0; i < this.moduleContainers.length; i++) {
+        var item = this.moduleContainers[i];
+        if (item.containerId == idToRemove) {
+            this.moduleContainers.splice(i, 1);
+            break;
+        }
+    }
 
 }
 
