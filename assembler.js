@@ -33,6 +33,7 @@ testConfig[osapi.container.ContainerConfig.RENDER_DEBUG] = '1';
 //  callback('john.doe:john.doe:appid:cont:url:0:default', 1000);
 //};
 
+
 //  Create the new CommonContainer
 var CommonContainer = new osapi.container.Container(testConfig);
 
@@ -160,10 +161,14 @@ var lifecycle = function() {
     log('It took ' + (osapi.container.util.getCurrentTimeMs() - closeStart) +
             ' ms to close the gadget in the site with id ' + site.getId());
   };
-  listeners[osapi.container.CallbackType.ON_BEFORE_RENDER] = function(gadgetUrl) {
-    renderStart = osapi.container.util.getCurrentTimeMs();
+
+  listeners[osapi.container.CallbackType.ON_BEFORE_RENDER] = function (gadgetUrl) {
+      renderStart = osapi.container.util.getCurrentTimeMs();
+      gadgetManager.onBeforeRender(gadgetUrl, this);
   };
-  listeners[osapi.container.CallbackType.ON_RENDER] = function(gadgetUrl) {
+  listeners[osapi.container.CallbackType.ON_RENDER] = function (gadgetUrl) {
+      gadgetManager.onRender(gadgetUrl, this);
+
     log('It took ' + (osapi.container.util.getCurrentTimeMs() - renderStart) +
             ' ms to render the gadget at the URL ' + gadgetUrl);
   };
