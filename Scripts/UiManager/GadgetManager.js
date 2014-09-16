@@ -3,9 +3,7 @@
     this.roomId = null;
     this.clientName = null;
 
-    this.curentDOMWidgetId = null;
-
-    this.modulesContainers = [];
+    this.moduleContainers = [];
 
     this.cols = 4;
 
@@ -49,8 +47,8 @@ GnxGadgetManager.prototype.addGadget = function (data) {
     var gridster = $(".gridster > ul").gridster(this.gridsterOptions).data('gridster');
     var sizeFactor = 2;
 
-    var divId = this.generateUUID();
-    var contentId = this.generateUUID();
+    var divId = $.getUuid();
+    var contentId = $.getUuid();
 
     // old template
     //var t = '<div class="gnx-widget-header gnx-widget-font">' +
@@ -105,6 +103,13 @@ GnxGadgetManager.prototype.addGadget = function (data) {
     gridster.set_dom_grid_width();
     gridster.set_dom_grid_height();
 
+    // store info about gadget container - used to show/hide load mask while gadget is being prepared
+    this.moduleContainers.push({
+        containerId: divId,
+        data: data
+    });
+
+
 }
 
 
@@ -113,16 +118,21 @@ GnxGadgetManager.prototype.removeGadget = function (idToRemove) {
     // get widget with given id
     var widGetEl = $('#' + idToRemove);
     gridster.remove_widget(widGetEl[0]);
+
+
+    // remove widget from array after its being removed from system
+    items = $.grep(this.moduleContainers, function (item) {
+        return item.containerId !== idToRemove;
+    });
+
 }
 
-GnxGadgetManager.prototype.generateUUID = function () {
-    var d = new Date().getTime();
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = (d + Math.random() * 16) % 16 | 0;
-        d = Math.floor(d / 16);
-        return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
-    });
-    return uuid;
+GnxGadgetManager.prototype.getWidgetByGadgetUrl = function (gadgetUrl) {
+    for (var i = 0; i < this.moduleContainers.length; i++) {
+        var gUrlPure = gadgetUrl.split('?')[0];
+        if (this.moduleContainers[i].data.GadgetUrl == gUrlPure) return this.moduleContainers[i];
+    }
+    return null;
 }
 
 GnxGadgetManager.prototype.initGridster = function () {
@@ -132,8 +142,8 @@ GnxGadgetManager.prototype.initGridster = function () {
 GnxGadgetManager.prototype.showAll = function () {
     //gadgetManager
 
-    for (var i = 0; i < gadgetManager.modulesContainers.length; i++) {
-        gadgetManager.modulesContainers[i].show();
+    for (var i = 0; i < this.moduleContainers.length; i++) {
+        $('#' + this.moduleContainers[i].containerId).find('.gnx-widget-center').show();
     }
 
 }
@@ -141,19 +151,19 @@ GnxGadgetManager.prototype.showAll = function () {
 GnxGadgetManager.prototype.hideAll = function () {
     //gadgetManager
 
-    for (var i = 0; i < gadgetManager.modulesContainers.length; i++) {
-        gadgetManager.modulesContainers[i].hide();
+    for (var i = 0; i < this.moduleContainers.length; i++) {
+        $('#' + this.moduleContainers[i].containerId).find('.gnx-widget-center').hide();
     }
 
 }
 
-GnxGadgetManager.prototype.onBeforeRender = function () {
-    $('#' + this.curentDOMWidgetId).showLoadMask();
-}
+//GnxGadgetManager.prototype.onBeforeRender = function (url) {
+//    $('#' + this.getWidgetByGadgetUrl(url).containerId).showLoadMask();
+//}
 
-GnxGadgetManager.prototype.onRender = function () {
-    $('#' + this.curentDOMWidgetId).hideLoadMask();
-}
+//GnxGadgetManager.prototype.onRender = function (url) {
+//    $('#' + this.getWidgetByGadgetUrl(url).containerId).hideLoadMask();
+//}
 
 
 // Global variable

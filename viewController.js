@@ -167,41 +167,41 @@ $(function () {
     }
 
     window.getNewGadgetElementOriginal = function (result, gadgetURL, injectDivId) {
-        result[gadgetURL] = result[gadgetURL] || {};
-        var gadgetSiteString = "$(this).closest(\'.portlet\').find(\'.portlet-content\').data(\'gadgetSite\')";
-        var viewItems = '';
-        var gadgetViews = result[gadgetURL].views || {};
-        for (var aView in gadgetViews) {
-            viewItems = viewItems + '<li><a href="#" onclick="navigateView(' + gadgetSiteString + ',' + '\'' + gadgetURL + '\'' + ',' + '\'' + aView + '\'' + '); return false;">' + aView + '</a></li>';
-        }
-        var newGadgetSite = gadgetTemplate;
-        newGadgetSite = newGadgetSite.replace(/(gadget-site)/g, '$1-' + curId);
-        siteToTitleMap['gadget-site-' + curId] = 'gadget-title-' + curId;
-        var gadgetTitle = (result[gadgetURL] && result[gadgetURL]['modulePrefs'] && result[gadgetURL]['modulePrefs'].title) || 'Title not set';
+      //  result[gadgetURL] = result[gadgetURL] || {};
+      //  var gadgetSiteString = "$(this).closest(\'.portlet\').find(\'.portlet-content\').data(\'gadgetSite\')";
+      //  var viewItems = '';
+      //  var gadgetViews = result[gadgetURL].views || {};
+      //  for (var aView in gadgetViews) {
+      //      viewItems = viewItems + '<li><a href="#" onclick="navigateView(' + gadgetSiteString + ',' + '\'' + gadgetURL + '\'' + ',' + '\'' + aView + '\'' + '); return false;">' + aView + '</a></li>';
+      //  }
+      //  var newGadgetSite = gadgetTemplate;
+      //  newGadgetSite = newGadgetSite.replace(/(gadget-site)/g, '$1-' + curId);
+      //  siteToTitleMap['gadget-site-' + curId] = 'gadget-title-' + curId;
+      //  var gadgetTitle = (result[gadgetURL] && result[gadgetURL]['modulePrefs'] && result[gadgetURL]['modulePrefs'].title) || 'Title not set';
 
-        if (!injectDivId) {
-            injectDivId = 'gadgetArea';
-        }
+      //  if (!injectDivId) {
+      //      injectDivId = 'gadgetArea';
+      //  }
 
 
-        $(newGadgetSite).appendTo($('#' + injectDivId)).addClass('ui-widget ui-widget-content ui-helper-clearfix ui-corner-all')
-      .find('.portlet-header')
-      .addClass('ui-widget-header ui-corner-all')
-      .text('')
-      .append('<span id="gadget-title-' + curId + '">' + gadgetTitle + '</span>' +
-              '<ul id="viewsDropdown">' +
-             '<li class="li-header">' +
-               '<a href="#" class="hidden"><span id="dropdownIcon" class="ui-icon ui-icon-triangle-1-s"></span></a>' +
-             '<ul>' +
-               viewItems +
-             '</ul>' +
-              '</li>' +
-               '</ul>')
-        .append('<span id="remove" class="ui-icon ui-icon-closethick"></span>')
-        .append('<span id="expand" class="ui-icon ui-icon-plusthick"></span>')
-        .append('<span id="collapse" class="ui-icon ui-icon-minusthick"></span>');
+      //  $(newGadgetSite).appendTo($('#' + injectDivId)).addClass('ui-widget ui-widget-content ui-helper-clearfix ui-corner-all')
+      //.find('.portlet-header')
+      //.addClass('ui-widget-header ui-corner-all')
+      //.text('')
+      //.append('<span id="gadget-title-' + curId + '">' + gadgetTitle + '</span>' +
+      //        '<ul id="viewsDropdown">' +
+      //       '<li class="li-header">' +
+      //         '<a href="#" class="hidden"><span id="dropdownIcon" class="ui-icon ui-icon-triangle-1-s"></span></a>' +
+      //       '<ul>' +
+      //         viewItems +
+      //       '</ul>' +
+      //        '</li>' +
+      //         '</ul>')
+      //  .append('<span id="remove" class="ui-icon ui-icon-closethick"></span>')
+      //  .append('<span id="expand" class="ui-icon ui-icon-plusthick"></span>')
+      //  .append('<span id="collapse" class="ui-icon ui-icon-minusthick"></span>');
 
-        return $('#gadget-site-' + curId).get([0]);
+      //  return $('#gadget-site-' + curId).get([0]);
     }
 
     //create a gadget with navigation tool bar header enabling gadget collapse, expand, remove, navigate to view actions.
@@ -227,6 +227,20 @@ $(function () {
         var gadgetSite = portlet.find('.portlet-content').data('gadgetSite');
 
 
+        // NOTE: manage load masks
+        // at this point we can show load mask
+        $('#' + injectDivId).showLoadMask();
+        // this is callback to gadget being rendered
+        // so we use it to hide load mask wil bit of timeout
+        gadgetSite.onRender = function () {
+            // a bit delayed mask remove
+            setTimeout(function () {
+                $('#' + injectDivId).hideLoadMask();
+            }, 1000)
+        }
+
+        
+
         if (btnMin) {
             $(btnMin).click(function (element) { console.warn('btnMin clicked'); });
         }
@@ -248,11 +262,10 @@ $(function () {
 
         $('#' + $(element).find('iframe')[0].id).height($('#' + injectDivId).height());
 
-        gadgetManager['modulesContainers'].push($(element));
-
     };
 
     window.gnxPreloadAndAddGadget = function (url, divId, data) {
+
         CommonContainer.preloadGadget(url, function (result) {
             for (var gadgetURL in result) {
                 if (!result[gadgetURL].error) {
@@ -261,6 +274,7 @@ $(function () {
                 }
             }
         });
+
     };
 
 });
