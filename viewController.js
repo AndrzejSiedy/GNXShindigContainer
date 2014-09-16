@@ -236,7 +236,7 @@ $(function () {
             // a bit delayed mask remove
             setTimeout(function () {
                 $('#' + injectDivId).hideLoadMask();
-            }, 1000)
+            }, 2000)
         }
 
         
