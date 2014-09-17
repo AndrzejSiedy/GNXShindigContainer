@@ -272,6 +272,21 @@ $(function () {
                     window.buildGadget(result, gadgetURL, divId, data);
                     curId++;
                 }
+                else {
+                    gadgetManager.removeGadget($('#' + divId).parent().parent().parent().attr('id'));
+                    console.warn(data.Name + ' - Modul wypierdolil sie w czasei ladowania');
+                    //$.ConfirmationDialog({
+                    //    title: 'Fuckup!!!!',
+                    //    icon: '',
+                    //    message: 'Modul wypierdolil sie w czasei ladowania - damy znac sukinsynowi co sie tym zajmuje!',
+                    //    onOk: function (evt) {
+                    //        console.warn('ok', evt.data);
+                    //    },
+                    //    onCancel: function (evt) {
+                    //        console.warn('cancel', evt.data)
+                    //    }
+                    //});
+                }
             }
         });
 
