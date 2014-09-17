@@ -115,7 +115,7 @@ GnxGadgetManager.prototype.addGadget = function (data) {
 }
 
 
-GnxGadgetManager.prototype.removeGadget = function (idToRemove) {
+GnxGadgetManager.prototype.removeGadget = function (idToRemove, message) {
     var gridster = $(".gridster > ul").gridster(this.gridsterOptions).data('gridster');
     // get widget with given id
     var widGetEl = $('#' + idToRemove);
@@ -133,6 +133,21 @@ GnxGadgetManager.prototype.removeGadget = function (idToRemove) {
             this.moduleContainers.splice(i, 1);
             break;
         }
+    }
+
+    if (message) {
+        $.InfoDialog({
+            title: 'Info',
+            height: 150,
+            width: 200,
+            resizable: false,
+            draggable: true,
+            icon: '<i class="icon-help-2"></i>',
+            message: message,
+            onOk: function (evt) {
+                console.warn('ok', evt.data);
+            }
+        });
     }
 
 }

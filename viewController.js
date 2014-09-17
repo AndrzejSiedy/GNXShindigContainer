@@ -273,21 +273,8 @@ $(function () {
                     curId++;
                 }
                 else {
-                    gadgetManager.removeGadget($('#' + divId).parent().parent().parent().attr('id'));
-                    $.InfoDialog({
-                        title: 'Info',
-                        height: 150,
-                        width: 200,
-                        resizable: false,
-                        icon: '',
-                        message: 'Given module did not load, information will be passed to the module owner',
-                        onOk: function (evt) {
-                            console.warn('ok', evt.data);
-                        },
-                        onCancel: function (evt) {
-                            console.warn('cancel', evt.data)
-                        }
-                    });
+                    var message = 'Given module did not load, information will be passed to the module owner';
+                    gadgetManager.removeGadget($('#' + divId).parent().parent().parent().attr('id'), message);
                 }
             }
         });
