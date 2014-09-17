@@ -66,6 +66,9 @@
 
 
     <!--Style site specific-->
+
+    <link href="Css/Gnx-Dialog.css" rel="stylesheet" />
+    <link href="Css/Gnx-Widget.css" rel="stylesheet" />
     <link href="Css/Site.css" rel="stylesheet" />
 
 
@@ -244,8 +247,11 @@
             $('#showDialog').click(function () {
                 $.ConfirmationDialog({
                     title: '666',
+                    height: 150,
+                    width: 200,
+                    resizable: true,
                     icon: '',
-                    message: 'a w morde jeza nietoperzasdvcsadvsadvasdvasdvsadvasdvsav',
+                    message: 'a w morde jeza n<br/>i<br/>eto<br/>pe<br/>rza<br/>sd<br/>v<br/>c<br/>s<br/>a<br/>d<br/>v<br/>s<br/>a<br/>d<br/>v<br/>asd<br/>va<br/>s<br/>d<br/>vsadvasdvsav<br/>',
                     onOk: function (evt) {
                         console.warn('ok', evt.data);
                     },
