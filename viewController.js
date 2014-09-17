@@ -274,18 +274,20 @@ $(function () {
                 }
                 else {
                     gadgetManager.removeGadget($('#' + divId).parent().parent().parent().attr('id'));
-                    console.warn(data.Name + ' - Modul wypierdolil sie w czasei ladowania');
-                    //$.ConfirmationDialog({
-                    //    title: 'Fuckup!!!!',
-                    //    icon: '',
-                    //    message: 'Modul wypierdolil sie w czasei ladowania - damy znac sukinsynowi co sie tym zajmuje!',
-                    //    onOk: function (evt) {
-                    //        console.warn('ok', evt.data);
-                    //    },
-                    //    onCancel: function (evt) {
-                    //        console.warn('cancel', evt.data)
-                    //    }
-                    //});
+                    $.InfoDialog({
+                        title: 'Info',
+                        height: 150,
+                        width: 200,
+                        resizable: false,
+                        icon: '',
+                        message: 'Given module did not load, information will be passed to the module owner',
+                        onOk: function (evt) {
+                            console.warn('ok', evt.data);
+                        },
+                        onCancel: function (evt) {
+                            console.warn('cancel', evt.data)
+                        }
+                    });
                 }
             }
         });
