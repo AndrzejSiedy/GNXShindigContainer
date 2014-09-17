@@ -1,0 +1,15 @@
+﻿.gnx-center{
+    height: 100%;
+    width: 100%;
+    white-space:nowrap;
+    overflow-x:auto;
+    overflow-y:auto;
+}
+
+.gnx-bottom{
+    position: absolute;
+    height: 35px;
+    width: 100%;
+    padding-top: 3px !important;
+    padding-right: 25px !important;
+}

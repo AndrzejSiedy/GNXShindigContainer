@@ -1,0 +1,73 @@
+﻿
+
+
+/*Tile layout CSS - stop fit middle section with Thumbnail
+command bottom section with extra info, rating etc.*/
+.top, .middle, .bottom {
+    position: absolute;
+}
+
+
+
+.tile-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.tile-top {
+    height: 20px;
+    width: 100%;
+    background-color: grey !important;
+}
+
+.tile-middle {
+    top: 0px;
+    bottom: 0px; 
+    width: 100%;
+    height: calc(100% - (25px)) !important;
+    background-color: black !important;
+}
+
+.tile-bottom {
+    position: relative;
+    bottom: 0 !important;
+    height: 25px !important;
+    width: 100%;
+    background-color: green !important;
+}
+
+.gnx-widget-font{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.gnx-widget-title{
+    font-size: 14px !important;
+}
+
+.gnx-widget-header {
+    height: 32px;
+    text-align:left;
+    background-color: white;
+    width: 100%;
+    border-bottom: 1px solid #e9e9e9;
+    padding-left: 10px !important;
+    padding-top: 7px !important;
+    font-size: 14px !important;
+    position: absolute;
+}
+
+.gnx-widget-center {
+    margin-top: 32px !important;
+    height: calc(100% - (57px));	
+    background-color:white;
+}
+
+.gnx-widget-footer {
+    border-top: 1px solid #e9e9e9;
+    background-color: white;
+    height: 25px;
+}
